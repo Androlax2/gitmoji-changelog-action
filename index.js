@@ -17,8 +17,7 @@ Toolkit.run(async tools => {
         await tools.exec(`git commit -m ${commitMessage}`)
 
         // push changes
-        const remoteRepo = `https://${process.env.GITHUB_ACTOR}:${process.env.GITHUB_TOKEN}@github.com/${process.env.GITHUB_REPOSITORY}.git`
-        await tools.exec(`git push ${remoteRepo}`)
+        await tools.exec(`git push`)
     } catch (e) {
         tools.log.fatal(e)
         tools.exit.failure('Failed to generate changelog')
