@@ -24,3 +24,4 @@ Toolkit.run(async tools => {
     }
     tools.exit.success('Changelog generated!')
 })
+
