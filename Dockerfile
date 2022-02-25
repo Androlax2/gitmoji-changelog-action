@@ -11,7 +11,7 @@
 FROM node:14.14-slim
 
 # Labels for GitHub to read your action
-LABEL "com.github.actions.name"="Gitmoji Changelog Action"
+LABEL "com.github.actions.name"="Androlax2 Gitmoji Changelog Action"
 LABEL "com.github.actions.description"="Generate gitmoji changelog and commit back to branch."
 # Here are all of the available icons: https://feathericons.com/
 LABEL "com.github.actions.icon"="chevron-up"
