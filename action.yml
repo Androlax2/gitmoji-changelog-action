@@ -1,4 +1,4 @@
-name: Gitmoji Changelog Action
+name: Androlax2 Gitmoji Changelog Action
 description: Generate gitmoji changelog and commit back to branch
 runs:
   using: docker
