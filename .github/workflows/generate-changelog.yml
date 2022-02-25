@@ -15,4 +15,4 @@ jobs:
         with:
           fetch-depth: 0 # 👈 Required to retrieve git history for changelog
       - name: Gitmoji Changelog Action
-        uses: Androlax2/androlax2-gitmoji-changelog-action@1.0.1
+        uses: Androlax2/androlax2-gitmoji-changelog-action@main
