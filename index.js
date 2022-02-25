@@ -6,21 +6,19 @@ Toolkit.run(async tools => {
 
     try {
         // set git user
-        await tools.runInWorkspace('git',
-            ['config', 'user.name', `"${process.env.GITHUB_USER || 'Automated Version Bump'}"`])
-        await tools.runInWorkspace('git',
-            ['config', 'user.email', `"${process.env.GITHUB_EMAIL || 'gh-action-bump-version@users.noreply.github.com'}"`])
+        await tools.exec(`git config user.name "${process.env.GITHUB_USER || 'Automated Version Bump'}"`)
+        await tools.exec(`git config user.email "${process.env.GITHUB_EMAIL || 'gh-action-bump-version@users.noreply.github.com'}"`)
 
         // run gitmoji changelog
-        await tools.runInWorkspace('npx', ['gitmoji-changelog'])
-        await tools.runInWorkspace('git', ['add', 'CHANGELOG.md'])
+        await tools.exec(`npx gitmoji-changelog`)
+        await tools.exec(`git add CHANGELOG.md`)
 
         // commit changes
-        await tools.runInWorkspace('git', ['commit', '-a', '-m', `${commitMessage}`])
+        await tools.exec(`git commit -a -m ${commitMessage}`)
 
         // push changes
         const remoteRepo = `https://${process.env.GITHUB_ACTOR}:${process.env.GITHUB_TOKEN}@github.com/${process.env.GITHUB_REPOSITORY}.git`
-        await tools.runInWorkspace('git', ['push', remoteRepo])
+        await tools.exec(`git push ${remoteRepo}`)
     } catch (e) {
         tools.log.fatal(e)
         tools.exit.failure('Failed to generate changelog')
